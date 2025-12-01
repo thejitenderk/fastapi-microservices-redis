@@ -31,7 +31,7 @@ jobs:
         cd inventory_frontend
         REGISTRY=${{ secrets.ACR_NAME }}.azurecr.io
         IMAGE_NAME=inventory-frontend
-        TAG=$(date +%s)
+        TAG=${{ github.run_id }}
     
         docker build -t $REGISTRY/$IMAGE_NAME:$TAG .
     
@@ -40,6 +40,6 @@ jobs:
       run: |
         REGISTRY=${{ secrets.ACR_NAME }}.azurecr.io
         IMAGE_NAME=inventory-frontend
-        TAG=$(date +%s)
+        TAG=${{ github.run_id }}
     
         docker push $REGISTRY/$IMAGE_NAME:$TAG
